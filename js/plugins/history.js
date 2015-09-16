@@ -27,12 +27,7 @@ define(['durandal/system', 'jquery'], function (system, $) {
     function updateHash(location, fragment, replace) {
         if (replace) {
             var href = location.href.replace(/(javascript:|#).*$/, '');
-
-            if (history.history.replaceState) {
-                history.history.replaceState({}, document.title, href + '#' + fragment); // using history.replaceState instead of location.replace to work around chrom bug
-            } else {
-                location.replace(href + '#' + fragment);
-            }
+            location.replace(href + '#' + fragment);
         } else {
             // Some browsers require that `hash` contains a leading #.
             location.hash = '#' + fragment;
